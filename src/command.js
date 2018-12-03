@@ -3,7 +3,11 @@
 function compareSnapshotCommand() {
   Cypress.Commands.add('compareSnapshot', (name, args = {}) => {
     // take snapshot
-    args.elementSelector ? cy.get(`${args.elementSelector}`).screenshot(`${name}`)  : cy.screenshot(`${name}`);
+    if (args.elementSelector) {
+      cy.get(`${args.elementSelector}`).screenshot(`${name}`);
+    } else {
+      cy.screenshot(`${name}`);
+    }
 
     // run visual tests
     const options = {
