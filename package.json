@@ -1,6 +1,6 @@
 {
   "name": "cypress-blink-test",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Module for adding visual regression testing to Cypress with Blink",
   "repository": "https://github.com/PatrickWalker/cypress-visual-regression",
   "author": "Patrick Walker <bpatrick.walker@gmail.com>",

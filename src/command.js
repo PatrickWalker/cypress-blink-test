@@ -2,11 +2,14 @@
 
 function compareSnapshotCommand() {
   Cypress.Commands.add('compareSnapshot', (name, args = {}) => {
+    // realistically we should just bang the args straight in rather than recreating
+    const blackoutVal = args.blackout ? args.blackout : [];
+    const screenOptions = { blackout: blackoutVal };
     // take snapshot
     if (args.elementSelector) {
-      cy.get(`${args.elementSelector}`).screenshot(`${name}`);
+      cy.get(`${args.elementSelector}`).screenshot(`${name}`, screenOptions);
     } else {
-      cy.screenshot(`${name}`);
+      cy.screenshot(`${name}`, screenOptions);
     }
 
     // run visual tests
